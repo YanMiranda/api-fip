@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  oracle-db:
+    image: gvenzl/oracle-xe:21.3.0
+    container_name: oracle-db
+    environment:
+      ORACLE_PASSWORD: admin123
+      APP_USER: magnum
+      APP_USER_PASSWORD: magnum123
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM dual;' | sqlplus -s magnum/magnum123@//localhost:1521/XEPDB1"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+
+volumes:
+  oracle-data:
