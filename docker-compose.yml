@@ -17,5 +17,25 @@ services:
       timeout: 10s
       retries: 10
 
+  magnum-fipe-api-1:
+    build:
+      context: .
+      dockerfile: ./magnum-fipe-api-1/Dockerfile
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+
+  magnum-fipe-api-2:
+    build:
+      context: .
+      dockerfile: ./magnum-fipe-api-2/Dockerfile
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+    ports:
+      - "8082:8082"
+
 volumes:
   oracle-data:

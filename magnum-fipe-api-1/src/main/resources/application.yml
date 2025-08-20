@@ -1,0 +1,12 @@
+quarkus:
+  http:
+    port: 8081
+  datasource:
+    db-kind: oracle
+    username: magnum
+    password: magnum123
+    jdbc:
+      url: jdbc:oracle:thin:@oracle-db:1521/XEPDB1
+  hibernate-orm:
+    database:
+      generation: update

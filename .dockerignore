@@ -1,5 +1,11 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+target/
+
+.mvn/
+
+# Ignorar logs
+*.log
+
+# Ignorar arquivos e pastas de IDEs
+.idea/
+*.iml
+.vscode/
