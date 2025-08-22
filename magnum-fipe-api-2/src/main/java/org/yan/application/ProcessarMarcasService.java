@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yan.domain.client.FipeClient;
+import org.yan.client.FipeClient;
 import org.yan.domain.model.Modelo.Modelo;
 import org.yan.domain.model.Modelo.dto.ModelosApiResponse;
 import org.yan.domain.model.marca.Marca;
