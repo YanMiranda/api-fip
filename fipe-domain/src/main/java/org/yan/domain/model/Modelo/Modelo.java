@@ -20,18 +20,18 @@ import org.yan.domain.model.marca.Marca;
 public class Modelo extends PanacheEntityBase {
 
     @Id
-    @Column(name = "mo_id")
+    @Column(name = "MO_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     @ManyToOne
-    @JoinColumn(name = "ma_id", nullable = false)
+    @JoinColumn(name = "MA_ID", nullable = false)
     public Marca marca;
 
-    @Column(name = "mo_codigo", nullable = false, length = 20)
-    public String codigo;
+    @Column(name = "MO_CODIGO", nullable = false)
+    public Integer codigo;
 
-    @Column(name = "mo_nome", nullable = false, length = 150)
+    @Column(name = "MO_NOME", nullable = false, length = 150)
     public String nome;
 }
 

@@ -30,7 +30,7 @@ public class MarcaController {
     }
 
     @POST
-    @Path("/fila")
+    @Path("/fila/para/api2")
     @Produces(MediaType.APPLICATION_JSON)
     public Response enfileirarCarga() {
         marcaService.enfileirarCargaDeMarcas();
