@@ -1,4 +1,4 @@
-package org.yan.domain.Veiculo.dto;
+package org.yan.domain.model.veiculo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

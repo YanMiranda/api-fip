@@ -1,29 +1,27 @@
 package org.yan.infra;
 
-import io.jsonwebtoken.ExpiredJwtException;
+import org.yan.exception.BusinessException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 import org.yan.base.ApiResponse;
 
-import io.jsonwebtoken.ExpiredJwtException;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @Provider
 @ApplicationScoped
-public class ExpiredJwtExceptionHandler implements ExceptionMapper<ExpiredJwtException> {
+public class BusinessExceptionHandler implements ExceptionMapper<BusinessException> {
 
     @Override
-    public Response toResponse(ExpiredJwtException ex) {
-        String mensagem = "Sessão expirada. Por favor, realize o login novamente.";
-        ApiResponse<Void> apiResponse = new ApiResponse<>(mensagem);
+    public Response toResponse(BusinessException ex) {
+        ApiResponse<Void> apiResponse = new ApiResponse<>(ex.getMessage());
 
-        return Response.status(Response.Status.UNAUTHORIZED)
+        return Response.status(Response.Status.CONFLICT)
                 .entity(apiResponse)
                 .type(MediaType.APPLICATION_JSON)
                 .build();

@@ -4,8 +4,8 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import org.yan.domain.Marca.dto.MarcaFipeResponse;
-import org.yan.domain.Veiculo.dto.VeiculoDTO;
+import org.yan.domain.model.marca.dto.MarcaFipeResponse;
+import org.yan.domain.model.veiculo.dto.VeiculoDTO;
 
 import java.util.List;
 

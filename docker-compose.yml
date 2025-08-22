@@ -17,6 +17,16 @@ services:
       timeout: 10s
       retries: 10
 
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
   magnum-fipe-api-1:
     build:
       context: .
@@ -24,8 +34,13 @@ services:
     depends_on:
       oracle-db:
         condition: service_healthy
+      rabbitmq:
+        condition: service_started
     ports:
       - "8081:8081"
+    environment: 
+      - QUARKUS_DATASOURCE_JDBC_URL=jdbc:oracle:thin:@//oracle-db:1521/XEPDB1
+      - QUARKUS_RABBITMQ_HOST=rabbitmq
 
   magnum-fipe-api-2:
     build:
@@ -34,8 +49,13 @@ services:
     depends_on:
       oracle-db:
         condition: service_healthy
+      rabbitmq:
+        condition: service_started
     ports:
       - "8082:8082"
+    environment: 
+      - QUARKUS_DATASOURCE_JDBC_URL=jdbc:oracle:thin:@//oracle-db:1521/XEPDB1
+      - QUARKUS_RABBITMQ_HOST=rabbitmq
 
 volumes:
   oracle-data:

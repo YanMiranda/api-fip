@@ -1,8 +1,6 @@
 package org.yan.domain.Marca.queue;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
-import org.yan.domain.Marca.dto.MarcaFipeResponse;
 
 @ApplicationScoped
 public class MarcaPublisher {

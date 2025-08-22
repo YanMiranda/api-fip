@@ -1,11 +1,22 @@
-package org.yan.domain.Veiculo;
+package org.yan.domain.model.veiculo;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import io.smallrye.common.constraint.NotNull;
-import jakarta.persistence.*;
-import org.yan.domain.AnoModelo.AnoModelo;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.yan.domain.model.anoModelo.AnoModelo;
 
+@Data
 @Entity
+@NoArgsConstructor
 @Table(name = "VEICULOS")
 public class Veiculo extends PanacheEntityBase {
 
