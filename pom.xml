@@ -10,9 +10,9 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>fipe-domain</module>
         <module>magnum-fipe-api-1</module>
         <module>magnum-fipe-api-2</module>
-        <module>fipe-domain</module>
     </modules>
 
     <properties>

@@ -7,12 +7,13 @@ import org.eclipse.microprofile.config.ConfigProvider;
 import org.eclipse.microprofile.rest.client.annotation.ClientHeaderParam;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.yan.domain.model.Modelo.dto.ModelosApiResponse;
+import org.yan.domain.model.anoModelo.dto.AnoFipe;
 import org.yan.domain.model.marca.dto.MarcaFipeResponse;
-import org.yan.domain.model.veiculo.dto.VeiculoDTO;
+import org.yan.domain.model.veiculo.dto.VeiculoFipeResponse;
 
 import java.util.List;
 
-@Path("/carros")
+@Path("/carros/marcas/")
 @RegisterRestClient(configKey = "fipe-api")
 @ClientHeaderParam(name = "X-API-KEY", value = "{getApiKey}")
 public interface FipeClient {
@@ -22,18 +23,21 @@ public interface FipeClient {
     }
 
     @GET
-    @Path("/marcas")
     List<MarcaFipeResponse> listarMarcas();
 
     @GET
-    @Path("/marcas/{codigoMarca}/modelos/{codigoModelo}/anos/{ano}")
-    VeiculoDTO buscarVeiculo(
+    @Path("{codigoMarca}/modelos/{codigoModelo}/anos/{ano}")
+    VeiculoFipeResponse buscarVeiculo(
             @PathParam("codigoMarca") String codigoMarca,
-            @PathParam("codigoModelo") String codigoModelo,
+            @PathParam("codigoModelo") Integer codigoModelo,
             @PathParam("ano") String ano
     );
 
     @GET
-    @Path("/{codigoMarca}/modelos")
+    @Path("{codigoMarca}/modelos")
     ModelosApiResponse listarModelosPorMarca(@PathParam("codigoMarca") String codigoMarca);
+
+    @GET
+    @Path("{codigoMarca}/modelos/{codigoModelo}/anos")
+    List<AnoFipe> listarAnosPorModelo(@PathParam("codigoMarca") String codigoMarca, @PathParam("codigoModelo") Integer codigoModelo);
 }

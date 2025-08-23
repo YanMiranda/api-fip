@@ -1,11 +1,11 @@
+.git
+.gitignore
+
 target/
+*/target/
 
-.mvn/
-
-# Ignorar logs
-*.log
-
-# Ignorar arquivos e pastas de IDEs
 .idea/
 *.iml
 .vscode/
+
+*.log

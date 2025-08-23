@@ -1,4 +1,4 @@
-package org.yan.domain.Marca.queue;
+package org.yan.infra.queue;
 
 import jakarta.enterprise.context.ApplicationScoped;
 

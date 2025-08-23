@@ -1,4 +1,4 @@
-package org.yan.exception;
+package org.yan.infra.exception;
 
 public class BusinessException extends RuntimeException {
     public BusinessException(String message) {
